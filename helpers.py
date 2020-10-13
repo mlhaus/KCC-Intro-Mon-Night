@@ -6,7 +6,7 @@ Prompts the user for a String and returns whatever was entered.
 @return - the String entered by the user
 '''
 def getString(prompt):
-    return input(prompt + " ").strip()
+    return input(prompt + " ")
  
 # Tests for getString
 # print(getString("What's your name?")) # Expected: exactly what was entered
