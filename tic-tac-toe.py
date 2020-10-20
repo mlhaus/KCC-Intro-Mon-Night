@@ -44,12 +44,13 @@ def main():
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
         count += 1
+        gameOver = checkWinner(board,currentPlayer)
         if(count == 9):
             gameOver = True
             drawBoard(board)
             print("It's a tie folks!")
-            break
-        gameOver = checkWinner(board,currentPlayer)
+          
+    
         
 
 main()
