@@ -27,6 +27,7 @@ def checkWinner(board, currentPlayer):
       board[0] == board[4] and board[4] == board[8] or
       board[2] == board[4] and board[4] == board[6] ):
         result = True
+        drawBoard(board)
         print("Congratulations ", currentPlayer + ", you won!")
     return result
 
@@ -34,6 +35,7 @@ def main():
     currentPlayer = "O"
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     gameOver = False
+    count = 0
     while(not gameOver):
         drawBoard(board)
         currentPlayer = switchPlayer(currentPlayer)
@@ -41,6 +43,13 @@ def main():
         while (board[choice-1] == "X" or board[choice-1] == "O"):
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
+        count += 1
+        if(count == 9):
+            gameOver = True
+            drawBoard(board)
+            print("It's a tie folks!")
+            break
         gameOver = checkWinner(board,currentPlayer)
+        
 
 main()
