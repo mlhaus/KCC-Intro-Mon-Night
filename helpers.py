@@ -1,16 +1,20 @@
 import math
- 
+
 '''
 Prompts the user for a String and returns whatever was entered.
 @param prompt - the prompt text for the user
 @return - the String entered by the user
 '''
 def getString(prompt):
-    return input(prompt + " ")
- 
+    try:
+        userInput = input(prompt + " ").strip()
+    except AttributeError:
+        userInput = input(prompt + " ")
+    return userInput
+
 # Tests for getString
 # print(getString("What's your name?")) # Expected: exactly what was entered
- 
+
 '''
 Converts a list of strings to a list of lowercase strings
 @param list - a list of strings
@@ -20,10 +24,10 @@ def listToLowercase(list):
   for i in range(len(list)):
     list[i] = list[i].lower()
   return list
- 
+
 # Tests
 # print(listToLowercase(["Yes", "Y", "No", "N"])) # Expected: ["yes", "y", "no", "n"]
- 
+
 '''
 Converts a list of strings to a string with commas separating each
 @param list - a list of strings
@@ -42,7 +46,7 @@ def listToString(list):
             result += str(item) + ", "
     result += "]:"
     return result
- 
+
 # Tests
 # nums = [1, 2, 3, 4, 5]
 # print(listToString(nums))
@@ -52,7 +56,7 @@ def listToString(list):
 # print(listToString(random))
 # yesOrNo = ["Yes", "No"]
 # print(listToString(yesOrNo))
- 
+
 '''
 Validates that the user's input is included in a list of possible values
 @param prompt - the prompt text for the user
@@ -82,14 +86,14 @@ def validateUserString(prompt, possibleValues, displayPossibleValues = True, tot
     attempts += 1
     if(attempts == totalAttempts):
       return None
- 
+
 # Tests
 # print(validateUserString("Are you a student?", ["Yes", "No"]))
 # print(validateUserString("Are you a student?", ["Yes", "No"], True, 3))
 # print(validateUserString("Are you a student?", ["Yes", "No"], True, 3, "Incorrect Y/N value."))
 # print(validateUserString("Are you a student?", ["Yes", "No"], True, float("inf"), "Incorrect Y/N value."))
 # print(validateUserString("What is your account number?", ["9999"], False, 3, "That account number was not found."))
- 
+
 '''
 Prompts the user to enter an integer. If the value is not an integer, it prints an invalid input message and tries again.  Otherwise, it returns the integer that was entered.
 @param prompt - the prompt text for the user
@@ -107,10 +111,10 @@ def getInt(prompt):
       return userInputInt
     except ValueError:
       invalidAttempt = True
- 
+
 # Tests
 # print(getInt("What's your age?"))
- 
+
 '''
 Prompts the user to enter a number. If the value is not a number, it prints an invalid input message and tries again.  Otherwise, it returns the value that was entered.
 @param prompt - the prompt text for the user
@@ -131,11 +135,11 @@ def getFloat(prompt, convertToInt = False):
       return userInputNum
     except ValueError:
       invalidAttempt = True
- 
+
 # Tests
 # print(getFloat("What's your weight?"))
 # print(getFloat("What's your weight?", True))
- 
+
 '''
 Prompts the user to enter a whole number.  If the value is not a whole
 number, prints the notIntMessage and tries again.  Otherwise, returns the
@@ -175,7 +179,7 @@ def getNum(prompt, minValue = -float("inf"), maxValue = float("inf"), totalAttem
       attempts += 1
       if(attempts == totalAttempts):
         return None
- 
+
 # Tests
 # print(getNum("How much do you weigh?"))
 # print(getNum("How much do you weigh?", 0))
