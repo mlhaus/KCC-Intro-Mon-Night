@@ -17,5 +17,5 @@ def primary_color(primary_color1,primary_color2):
 primaryColor1 = validateUserString("Choose a color" ,["red","yellow","blue"],True ,3 ,"Please choose red, yellow, or blue")
 primaryColor2 = validateUserString("Choose a second color" ,["red","yellow","blue"] ,True , 3, "Please choose red, yellow, or blue")
 
-primary_color("primaryColor1, primaryColor2") 
+primary_color(primaryColor1, primaryColor2) 
 
