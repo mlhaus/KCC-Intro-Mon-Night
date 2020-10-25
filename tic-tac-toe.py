@@ -15,9 +15,13 @@ def switchPlayer(currentPlayer):
     print("Player "+ currentPlayer +", it's your turn." )
     return currentPlayer
 
-def checkWinner(board, currentPlayer):
+def checkWinner(board, currentPlayer, turns):
     result = False
-    if ( 
+    if turns == 9:
+        drawBoard(board)
+        result = True
+        print("Game end in a tie. No winner.")
+    elif ( 
       board[0] == board[1] and board[1] == board[2] or
       board[3] == board[4] and board[4] == board[5] or
       board[6] == board[7] and board[7] == board[8] or
@@ -26,21 +30,24 @@ def checkWinner(board, currentPlayer):
       board[2] == board[5] and board[5] == board[8] or
       board[0] == board[4] and board[4] == board[8] or
       board[2] == board[4] and board[4] == board[6] ):
+        drawBoard(board)
         result = True
-        print("Congratulations ", currentPlayer + ", you won!")
+        print("Player " + currentPlayer + " WINS!")
     return result
 
 def main():
+    turns = 0
     currentPlayer = "O"
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     gameOver = False
     while(not gameOver):
         drawBoard(board)
         currentPlayer = switchPlayer(currentPlayer)
-        choice = getNum("Pick a spot:", 1, len(board), float("inf"), True)
+        turns += 1
+        choice = getNum("Player " + currentPlayer + ",", 1, len(board), float("inf"), True)
         while (board[choice-1] == "X" or board[choice-1] == "O"):
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
-        gameOver = checkWinner(board,currentPlayer)
+        gameOver = checkWinner(board,currentPlayer,turns)
 
 main()
