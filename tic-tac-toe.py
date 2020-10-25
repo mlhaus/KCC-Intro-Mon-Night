@@ -30,9 +30,9 @@ def checkWinner(board, currentPlayer, turns):
       board[2] == board[5] and board[5] == board[8] or
       board[0] == board[4] and board[4] == board[8] or
       board[2] == board[4] and board[4] == board[6] ):
-        drawBoard(board)
         result = True
-        print("Player " + currentPlayer + " WINS!")
+        drawBoard(board)
+        print("Congratulations ", currentPlayer + ", you won!")
     return result
 
 def main():
@@ -40,6 +40,7 @@ def main():
     currentPlayer = "O"
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     gameOver = False
+    count = 0
     while(not gameOver):
         drawBoard(board)
         currentPlayer = switchPlayer(currentPlayer)
