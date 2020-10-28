@@ -1,26 +1,28 @@
 from helpers import getNum
-from random import randint
+import random
 
-# STEP 3: Define a randomNumbers function that takes a number as a parameter.
-	# STEP 4a: Create an empty array called result
-	# STEP 5: Create a loop that runs n times
-		# STEP 6: Generate a random number between 0 and 100. Add the number to the result array.
-	# STEP 4b: Return the result array variable
+def randomNumber(number):
+  result = []
+  for i in range(number):
+    rand = random.randint(0, 100)
+    result.append(rand)
+  return result
 
-# STEP 9: Define a largerThan function that takes an array of numbers and a single number as parameters.
-    # STEP 10: Create an empty array called result
-    # STEP 11: Create a loop that runs once for each item in the list/array parameter
-    	# STEP 12: Write an if statement to test if the current value in the list is greater than the number parameter
-    		# STEP 13: If true, write another if statement to test if the current value in the list is not already in the result array
-    			# STEP 14: If true, add the current value in the list to the result array
-    # STEP 15: Print the list array variable. Label it "List of numbers".
-    # STEP 16: Sort the result array variable and print it. Label it "Numbers that are greater than [n]"
+def largerThan(arr, int):
+  result = []
+  for number in arr:
+    if(number > int):
+      if(number not in result):
+        result.append(number)
+  print("List of numbers: " + str(arr))
+  result.sort()
+  print("Numbers that are greater than", int, str(result))
 
 
 def main():
-  # STEP 1: Prompt the user for a number between 10 and 20. Assign the user's response to a variable called howMany.
-  # STEP 2: Call a randomNumbers function, passing the howMany variable as an argument. Assign the result to a variable called list.
-  # STEP 7: Prompt the user for a number between 0 and 100. Assign the user's response to a variable called n.
-  # STEP 8: Call a largerThan function, passing the list and n variables as arguments.
+  howMany = getNum("How many random numbers?", 10, 20, float("inf"), True)
+  list = randomNumber(howMany)
+  n = getNum("Enter smallest desired number.", 0, 100, float("inf"), True)
+  largerThan(list, n)
   
 main()
