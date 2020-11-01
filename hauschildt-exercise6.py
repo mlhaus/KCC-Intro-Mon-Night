@@ -1,5 +1,4 @@
 from helpers import getNum
-<<<<<<< HEAD
 from random import randint
 
 # STEP 3: Define a randomNumbers function that takes a number as a parameter.
@@ -23,34 +22,5 @@ def main():
   # STEP 2: Call a randomNumbers function, passing the howMany variable as an argument. Assign the result to a variable called list.
   # STEP 7: Prompt the user for a number between 0 and 100. Assign the user's response to a variable called n.
   # STEP 8: Call a largerThan function, passing the list and n variables as arguments.
-=======
-
-def getRainfallData():
-	result = [] 
-	months = ["March", "April", "May", "June"]
-	for i in range(len(months)):
-		question = "Enter " + months[i] + "'s rainfall total: "
-		result.append(getNum(question, 0.0, 100.0))
-	return result
-
-def getSum(rainfallData):
-    sum = 0
-    for value in rainfallData:
-        sum += value
-    return sum
-
-def getAverage(sum, count):
-    return sum / count
-
-def main():
-    rainfall = getRainfallData()
-    total = getSum(rainfall)
-    average = getAverage(total, len(rainfall))
-    print("Total: " + str(total))
-    print("Average: " + str(average))
-    print("Highest: " + str(max(rainfall)))
-    print("Lowest: " + str(min(rainfall)))
-  # STEP 16: Print the total, average, highest, and lowest amounts
->>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
   
 main()
