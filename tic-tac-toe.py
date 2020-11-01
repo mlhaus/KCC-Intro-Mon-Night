@@ -32,7 +32,12 @@ def checkWinner(board, currentPlayer, turns):
       board[2] == board[4] and board[4] == board[6] ):
         drawBoard(board)
         result = True
+<<<<<<< HEAD
         print("Player " + currentPlayer + " WINS!")
+=======
+        drawBoard(board)
+        print("Congratulations ", currentPlayer + ", you won!")
+>>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
     return result
 
 def main():
@@ -40,6 +45,7 @@ def main():
     currentPlayer = "O"
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     gameOver = False
+    count = 0
     while(not gameOver):
         drawBoard(board)
         currentPlayer = switchPlayer(currentPlayer)
@@ -48,6 +54,18 @@ def main():
         while (board[choice-1] == "X" or board[choice-1] == "O"):
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
+<<<<<<< HEAD
         gameOver = checkWinner(board,currentPlayer,turns)
+=======
+        count += 1
+        gameOver = checkWinner(board,currentPlayer)
+        if(count == 9):
+            gameOver = True
+            drawBoard(board)
+            print("It's a tie folks!")
+          
+    
+        
+>>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
 
 main()
