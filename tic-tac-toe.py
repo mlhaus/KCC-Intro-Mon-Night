@@ -30,14 +30,18 @@ def checkWinner(board, currentPlayer, turns):
       board[2] == board[5] and board[5] == board[8] or
       board[0] == board[4] and board[4] == board[8] or
       board[2] == board[4] and board[4] == board[6] ):
-        drawBoard(board)
         result = True
-<<<<<<< HEAD
+# <<<<<<< HEAD
+# <<<<<<< HEAD
         print("Player " + currentPlayer + " WINS!")
-=======
+# =======
         drawBoard(board)
         print("Congratulations ", currentPlayer + ", you won!")
->>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# >>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# =======
+        drawBoard(board)
+        print("Congratulations ", currentPlayer + ", you won!")
+# >>>>>>> 20900741b892a505c951679128f49c4b540eaaaa
     return result
 
 def main():
@@ -54,11 +58,12 @@ def main():
         while (board[choice-1] == "X" or board[choice-1] == "O"):
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
-<<<<<<< HEAD
+# <<<<<<< HEAD
+# <<<<<<< HEAD
         gameOver = checkWinner(board,currentPlayer,turns)
-=======
+# =======
         count += 1
-        gameOver = checkWinner(board,currentPlayer)
+        gameOver = checkWinner(board,currentPlayer,turns)
         if(count == 9):
             gameOver = True
             drawBoard(board)
@@ -66,6 +71,9 @@ def main():
           
     
         
->>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# >>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# =======
+        gameOver = checkWinner(board,currentPlayer,turns)
+# >>>>>>> 20900741b892a505c951679128f49c4b540eaaaa
 
 main()
