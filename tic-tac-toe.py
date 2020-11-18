@@ -15,9 +15,13 @@ def switchPlayer(currentPlayer):
     print("Player "+ currentPlayer +", it's your turn." )
     return currentPlayer
 
-def checkWinner(board, currentPlayer):
+def checkWinner(board, currentPlayer, turns):
     result = False
-    if ( 
+    if turns == 9:
+        drawBoard(board)
+        result = True
+        print("Game end in a tie. No winner.")
+    elif ( 
       board[0] == board[1] and board[1] == board[2] or
       board[3] == board[4] and board[4] == board[5] or
       board[6] == board[7] and board[7] == board[8] or
@@ -27,11 +31,21 @@ def checkWinner(board, currentPlayer):
       board[0] == board[4] and board[4] == board[8] or
       board[2] == board[4] and board[4] == board[6] ):
         result = True
+# <<<<<<< HEAD
+# <<<<<<< HEAD
+        print("Player " + currentPlayer + " WINS!")
+# =======
         drawBoard(board)
         print("Congratulations ", currentPlayer + ", you won!")
+# >>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# =======
+        drawBoard(board)
+        print("Congratulations ", currentPlayer + ", you won!")
+# >>>>>>> 20900741b892a505c951679128f49c4b540eaaaa
     return result
 
 def main():
+    turns = 0
     currentPlayer = "O"
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     gameOver = False
@@ -39,12 +53,17 @@ def main():
     while(not gameOver):
         drawBoard(board)
         currentPlayer = switchPlayer(currentPlayer)
-        choice = getNum("Pick a spot:", 1, len(board), float("inf"), True)
+        turns += 1
+        choice = getNum("Player " + currentPlayer + ",", 1, len(board), float("inf"), True)
         while (board[choice-1] == "X" or board[choice-1] == "O"):
             choice = getNum("That spot is taken, try again:", 1, len(board), float("inf"), True)
         board[choice - 1] = currentPlayer
+# <<<<<<< HEAD
+# <<<<<<< HEAD
+        gameOver = checkWinner(board,currentPlayer,turns)
+# =======
         count += 1
-        gameOver = checkWinner(board,currentPlayer)
+        gameOver = checkWinner(board,currentPlayer,turns)
         if(count == 9):
             gameOver = True
             drawBoard(board)
@@ -52,5 +71,9 @@ def main():
           
     
         
+# >>>>>>> 9c7d0a222af0e4d6332910c5e46674cec20bdf9d
+# =======
+        gameOver = checkWinner(board,currentPlayer,turns)
+# >>>>>>> 20900741b892a505c951679128f49c4b540eaaaa
 
 main()
